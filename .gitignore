@@ -1,0 +1,153 @@
+# ===========================
+# Python general ignores
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# ===========================
+# Virtual environments
+# ===========================
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ===========================
+# Environment & config files
+# ===========================
+*.env
+*.env.*
+.envrc
+*.ini
+*.cfg
+*.toml
+*.yaml
+*.yml
+instance/
+config/
+secrets.json
+settings_local.py
+
+# ===========================
+# Build & distribution
+# ===========================
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ===========================
+# PyInstaller
+# ===========================
+#  Usually these files are written by PyInstaller
+#  when building executables
+# ===========================
+*.manifest
+*.spec
+
+# ===========================
+# Unit test / coverage reports
+# ===========================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# ===========================
+# Logs & debug
+# ===========================
+*.log
+*.out
+*.err
+logs/
+log/
+debug.log
+
+# ===========================
+# IDE & editors
+# ===========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# ===========================
+# Jupyter Notebook
+# ===========================
+.ipynb_checkpoints
+*.ipynb
+
+# ===========================
+# MyPy / Type checker
+# ===========================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# ===========================
+# VSCode & JetBrains
+# ===========================
+*.code-workspace
+.vscode/
+.idea/
+
+# ===========================
+# System files
+# ===========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===========================
+# Local dev tools
+# ===========================
+# e.g., pipenv, poetry, uv, pdm
+# ===========================
+Pipfile.lock
+poetry.lock
+poetry.toml
+uv.lock
+pdm.lock
+.pdm.toml
+.pyproject.toml
+
+# ===========================
+# Temporary files
+# ===========================
+tmp/
+temp/
+.cache/
+__pypackages__/
