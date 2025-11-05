@@ -4,8 +4,7 @@ import secrets
 import uvicorn
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from dataclasses import dataclass, field
+from pydantic import BaseModel, dataclasses
 from typing import Dict, List
 from pathlib import Path
 from contextlib import asynccontextmanager
@@ -23,7 +22,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Book Management API",
-    version="1.0.0",
+    version="2.0.0",
     description="A simple CRUD API for managing books using FastAPI and dataclasses.",
     lifespan=lifespan,
 )
@@ -33,18 +32,21 @@ def generate_id() -> str:
     return secrets.token_hex(12)
 
 
-@dataclass
+@dataclasses.dataclass
 class Book:
     title: str
     author: str
     pages: int = 0
-    id: str = field(default_factory=generate_id)
+    id: str = dataclasses.Field(default_factory=generate_id)
 
 
 class BookCreate(BaseModel):
     title: str
     author: str
     pages: int = 0
+    
+    class Config:
+        from_attributes = True
 
 
 class BookResponse(BaseModel):
@@ -52,6 +54,9 @@ class BookResponse(BaseModel):
     title: str
     author: str
     pages: int
+    
+    class Config:
+        from_attributes = True
 
     @classmethod
     def from_book(cls, book: Book) -> BookResponse:
@@ -86,7 +91,7 @@ def create_book(book: BookCreate) -> BookResponse:
     new_book: Book = Book(**book.dict())
     books_db[new_book.id] = new_book
     save_db()
-    return BookResponse.from_book(new_book)
+    return BookResponse.model_validate(book)
 
 
 @app.get("/books/{book_id}", response_model=BookResponse, tags=["Books"], summary="Get a book by ID")
@@ -94,7 +99,7 @@ def get_book(book_id: str) -> BookResponse:
     book: Book = books_db.get(book_id)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
-    return BookResponse.from_book(book)
+    return BookResponse.model_validate(book)
 
 
 @app.put("/books/{book_id}", response_model=BookResponse, tags=["Books"], summary="Update a book by ID")
@@ -106,7 +111,7 @@ def update_book(book_id: str, updated_book: BookCreate) -> BookResponse:
     book.author = updated_book.author
     book.pages = updated_book.pages
     save_db()
-    return BookResponse.from_book(book)
+    return BookResponse.model_validate(book)
 
 
 @app.delete("/books/{book_id}", tags=["Books"], summary="Delete a book by ID")
@@ -120,7 +125,7 @@ def delete_book(book_id: str) -> Dict[str, str]:
 
 @app.get("/books/")
 def list_books() -> List[BookResponse]:
-    return [BookResponse.from_book(book) for book in books_db.values()]
+    return [BookResponse.model_validate(book) for book in books_db.values()]
 
 
 if __name__ == "__main__":
