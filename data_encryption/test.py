@@ -23,4 +23,4 @@ def test_ceasar_cipher() -> None:
 if __name__ == "__main__":
     test_bellaso_cipher()
     test_ceasar_cipher()
-    print("All tests passed.")
+    # print("All tests passed.")
