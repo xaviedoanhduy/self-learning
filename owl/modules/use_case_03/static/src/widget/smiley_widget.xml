@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="use_case_03.SmileyWidget">
+        <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded p-2 mb-2" 
+            style="font-weight: bold; font-size: 16px; cursor: pointer; user-select: none;"
+            t-on-click="toggleMood">
+            <span style="font-size: 24px; margin-right: 10px;">
+                <t t-out="state.isCool ? '😎' : '😊'"/>
+            </span>
+            
+            <span>
+                <t t-out="state.isCool ? 'Yeah! Sales Beast Mode: ON!' : 'You are doing great! Sell more!'"/>
+            </span>
+        </div>
+    </t>
+</templates>
