@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="use_case_05.SmileyTimer" t-inherit="use_case_03.SmileyWidget">
+        
+        <xpath expr="//span[1]" position="replace">
+            <span style="font-size: 24px; margin-right: 10px;">
+                <t t-out="state.isAngry ? '😠' : (state.isCool ? '😎' : '😊')"/>
+            </span>
+        </xpath>
+
+        <xpath expr="//span[2]" position="replace">
+            <span>
+                <t t-out="state.isAngry ? 'HURRY UP! TIME IS MONEY!' : (state.isCool ? 'Yeah! Sales Beast Mode: ON!' : 'You are doing great! Sell more!')"/>
+            </span>
+        </xpath>
+        
+        <xpath expr="//div" position="attributes">
+            <attribute name="t-attf-class">d-flex align-items-center justify-content-center rounded p-2 mb-2 {{state.isAngry ? 'bg-danger text-white' : 'bg-warning text-dark'}}</attribute>
+            <attribute name="class" remove="bg-warning text-dark"/>
+        </xpath>
+
+    </t>
+</templates>
