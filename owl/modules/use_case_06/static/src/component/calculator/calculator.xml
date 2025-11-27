@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="use_case_06.Calculator">
+        <div class="d-flex align-items-center p-3 bg-light border rounded mb-3">
+            <span class="me-3 fw-bold text-muted">Quick Calc:</span>
+
+            <input type="number"
+                class="form-control"
+                style="width: 100px;"
+                t-model="state.firstNumber"
+                placeholder="0"
+            />
+
+            <span class="mx-2 fw-bold">+</span>
+
+            <input type="number"
+                class="form-control"
+                style="width: 100px;"
+                t-model="state.secondNumber"
+                placeholder="0"
+            />
+
+            <span class="mx-2 fw-bold">=</span>
+
+            <span class="fw-bold text-primary fs-4">
+                <t t-out="total"/>
+            </span>
+        </div>
+    </t>
+</templates>
