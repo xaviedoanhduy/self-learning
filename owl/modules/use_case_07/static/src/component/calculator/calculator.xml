@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="use_case_07.CalculatorExtension" t-inherit="use_case_06.Calculator" t-inherit-mode="extension">
+        
+        <xpath expr="//div" position="inside">
+            <button class="btn btn-sm btn-outline-primary ms-3" 
+                    t-on-click="clearInputs"
+                    title="Clear Calculator">
+                <i class="fa fa-trash"/> Clear
+            </button>
+        </xpath>
+
+    </t>
+</templates>
